@@ -1,36 +1,30 @@
 import React from 'react';
-import classes from './Register.module.css';
+import classes from './SignIn.module.css';
 
-const register = (props) => {
+const signIn = (props) => {
     return (
         <form>
             <div className={classes.container}>
-                <h1>Sign Up For A ChatApp Account!</h1>
+                <h1>Sign In</h1>
                 <br/>
 
                 <div className={classes.inputContainer}>
-                    <label><b>Name</b></label>
-                    <input type="text" placeholder="Enter Name" name="name" required></input>
-
                     <label><b>Email</b></label>
                     <input type="text" placeholder="Enter Email" name="email" required></input>
 
                     <label><b>Password</b></label>
                     <input type="password" placeholder="Enter Password" name="psw" required></input>
-
-                    <label><b>Confirm Password</b></label>
-                    <input type="password" placeholder="Confirm Password" name="psw-confirm" required></input>
                     <br/>
 
-                    <button type="submit" className={classes.registerBtn}>SIGN UP</button>
+                    <button type="submit" className={classes.signInBtn}>SIGN IN</button>
                 </div>
             </div>
 
             <div className={classes.container}>
-                <p>Already have an account? <a href="/signin">Sign In</a></p>
+                <p>Don't have an account? <a href="/signup">Sign Up</a></p>
             </div> 
         </form>
     );
 };
 
-export default register;
+export default signIn;

@@ -10,7 +10,7 @@
     align-items: center;
 }
 
-.registerBtn {
+.signInBtn {
     background-color: rgb(175, 96, 76);
     color: white;
     padding: 16px 20px;
@@ -21,7 +21,7 @@
     opacity: 0.9;
 }
 
-.registerBtn:hover {
+.signInBtn:hover {
     opacity: 1;
 }
 
