@@ -7,12 +7,12 @@ import { Route, Switch } from 'react-router-dom';
 
 function App() {
   return (
-    <div >
+    <div>
       <Switch>
-            <Route path="/signin" exact component={SignIn}/>
-            <Route path="/signup" exact component={Register}/>
-            <Route path="/" exact component={Register}/>
-          </Switch>  
+        <Route path="/signin" component={SignIn}/>
+        <Route path="/signup" exact component={Register}/>
+        <Route path="/" component={Register}/>
+      </Switch>  
     </div>
   );
 }
