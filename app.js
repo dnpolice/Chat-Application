@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const auth = require('./middleware/auth');
 const app = express();
 require('dotenv').config();
 
@@ -23,13 +24,8 @@ connectDB();
 const PORT = 3000;
 
 app.use(express.json({ extended: false }));
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-  });
-  app.get('/about', (req, res) => {
-    res.send('About')
-  });
-
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/users', require('./routes/user'));
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
