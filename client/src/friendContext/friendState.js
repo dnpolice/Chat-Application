@@ -6,7 +6,8 @@ import axios from 'axios';
 const FriendState = props => {
     const initalState = {
         friendsList: null,
-        friendEmail : null
+        friendEmail: null,
+        friendName: null
     }
 
     const [state, dispatch] = useReducer(friendReducer, initalState);
@@ -21,8 +22,8 @@ const FriendState = props => {
         }
     }
     
-    const setFriendEmail = (email) => {
-        dispatch({type:'SET_FRIEND', payload: email});
+    const setFriendEmail = (email, name) => {
+        dispatch({type:'SET_FRIEND', payload: {email, name}});
     }
 
     return (
@@ -30,6 +31,7 @@ const FriendState = props => {
             value={{
                 friendsList: state.friendsList,
                 friendEmail: state.friendEmail,
+                friendName: state.friendName,
                 setFriendEmail,
                 getAllFriends
             }}>
