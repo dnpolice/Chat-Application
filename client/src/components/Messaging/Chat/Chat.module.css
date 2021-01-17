@@ -5,3 +5,9 @@
     position: absolute;
     left: 27%;
 }
+
+.ChatMessage{
+    text-align: center;
+    display:inline-block;
+    float: right;
+}

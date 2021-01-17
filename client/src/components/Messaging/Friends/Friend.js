@@ -1,11 +1,13 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import classes from './Friend.module.css';
+import FriendContext from '../../../friendContext/friendContext';
 
-const friend = ({name, email}) => {
+const Friend = ({name, email}) => {
     let style = classes.Friend;
-
+    const friendContext = useContext(FriendContext);
+    const {setFriendEmail} = friendContext;
     const openFriendHandler = () => {
-
+        setFriendEmail(email);
     }    
 
     return (
@@ -13,4 +15,4 @@ const friend = ({name, email}) => {
     );
 };
 
-export default friend;
+export default Friend;

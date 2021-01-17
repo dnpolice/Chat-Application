@@ -1,16 +1,12 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import classes from './FriendsList.module.css';
 import Friend from './Friend';
 import AddFriends from './AddFriends';
-import axios from 'axios';
 import FriendContext from '../../../friendContext/friendContext';
 
 const FriendsList = (props) => {
     const friendContext = useContext(FriendContext);
     const {getAllFriends, friendsList} = friendContext;
-    useEffect(() => {
-
-    }, [friendsList])
 
     if(!friendsList) getAllFriends();
 

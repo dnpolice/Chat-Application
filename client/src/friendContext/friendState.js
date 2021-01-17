@@ -5,7 +5,8 @@ import axios from 'axios';
 
 const FriendState = props => {
     const initalState = {
-        friendsList: null
+        friendsList: null,
+        friendEmail : null
     }
 
     const [state, dispatch] = useReducer(friendReducer, initalState);
@@ -19,11 +20,17 @@ const FriendState = props => {
             console.log(error.message);
         }
     }
+    
+    const setFriendEmail = (email) => {
+        dispatch({type:'SET_FRIEND', payload: email});
+    }
 
     return (
         <FriendContext.Provider
             value={{
                 friendsList: state.friendsList,
+                friendEmail: state.friendEmail,
+                setFriendEmail,
                 getAllFriends
             }}>
                 {props.children}
