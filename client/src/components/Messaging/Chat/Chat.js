@@ -14,6 +14,17 @@ const Chat = (props) => {
     return(
         <div className={classes.Chat}>
             <SendBar friendEmail={friendEmail}/>
+            <div className={classes.ChatBox}>
+                <div className={classes.ChatMessages_left}>
+                    Hello
+                </div>
+                <div className={classes.ChatMessages_right}>
+                    Hello
+                </div>
+                <div className={classes.ChatMessages_left}>
+                    Hi
+                </div>
+            </div>
         </div>
     );
 };
