@@ -8,9 +8,7 @@ const Register = (props) => {
     const {importUser, isAuthenticated} = authContext;
 
     useEffect(() => {
-        console.log("is authenticated", isAuthenticated);
         if(isAuthenticated === true){
-            console.log("push history");
             props.history.push('/messaging');
         }
     }, [isAuthenticated, props.history]);
@@ -31,7 +29,6 @@ const Register = (props) => {
         e.preventDefault();
         try {
             const result = await axios.post("/api/users", user, config);
-            console.log(result.data.token);
             localStorage.setItem('token', result.data.token);
             await importUser();
         } catch (error) {

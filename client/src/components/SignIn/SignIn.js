@@ -26,7 +26,6 @@ const SignIn = (props) => {
         e.preventDefault();
         try {
             const result = await axios.post("/api/auth", user, config);
-            console.log(result.data.token)
             localStorage.setItem('token', result.data.token);
             await importUser();
         } catch (error) {

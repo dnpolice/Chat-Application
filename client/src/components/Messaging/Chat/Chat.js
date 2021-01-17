@@ -14,6 +14,8 @@ const Chat = (props) => {
     }
 
     const [messages, setMessages] = useState(null);
+    const [refreshes, setRefreshes] = useState(0);
+    const [currentFriendEmail, setCurrentFriendEmail] = useState(friendEmail);
 
     
     const getMessages = async () => {
@@ -23,21 +25,29 @@ const Chat = (props) => {
             }
         }
         try{
-            console.log(friendEmail);
             const request = await axios.post('/api/messages/all', {friend: friendEmail}, config);
-            await timeout(5000);
             setMessages(request.data.messages);
+            setTimeout(() => {
+                if (refreshes > 100) setRefreshes(0);
+                setRefreshes(refreshes +1);
+            }, 15000);
         } catch(error) {
             console.log(error.message);
         }
     }
 
-    useEffect(async () => {
-        await timeout(5000);
+    useEffect(() => {
         getMessages();
-    }, [messages, friendEmail]);
+    }, [refreshes]);
 
-    if(!messages && friendEmail) getMessages();
+    if(!messages && friendEmail) {
+        getMessages();
+    }
+
+    if(currentFriendEmail !== friendEmail) {
+        setCurrentFriendEmail(friendEmail);
+        setMessages(null);
+    }
 
     if (!friendEmail) return (
      <h2 className={classes.ChatMessage}>Select a Friend to Message!</h2>
@@ -45,8 +55,8 @@ const Chat = (props) => {
     
     return(
         <div className={classes.Chat}>
-            <SendBar friendEmail={friendEmail}/>
-            <Messages/>
+            <SendBar friendEmail={friendEmail} setMessages={setMessages}/>
+            <Messages messages={messages} friendEmail={friendEmail} />
             <h3>{friendName}</h3>
         </div>
     );

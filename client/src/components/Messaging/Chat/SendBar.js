@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classes from './SendBar.module.css';
 import axios from 'axios';
 
-const SendBar = ({friendEmail}) => {
+const SendBar = ({friendEmail, setMessages}) => {
     const [message, setMessage] = useState("");
     const onChange = e => {
         setMessage(e.target.value);
@@ -17,7 +17,7 @@ const SendBar = ({friendEmail}) => {
         try{
         const request = await axios.post('/api/messages', {friend: friendEmail,
             message_body: message}, config);
-        setMessage("");
+        setMessages(request.data.messages);
         } catch(error) {
             console.log(error.message);
         }
