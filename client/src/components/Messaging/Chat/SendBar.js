@@ -26,7 +26,7 @@ const SendBar = ({friendEmail, setMessages}) => {
     
     return (
         <form className={classes.SendBar} onSubmit={sendMessage}>
-            <input type="text" name="message" value={message} onChange={onChange} maxlength="300" placeholder="Write Your Message"></input>
+            <input type="text" name="message" value={message} onChange={onChange} maxLength="300" placeholder="Write Your Message"></input>
             <button type="submit" name="send" className={classes.SendBtn}>SEND</button>
         </form>
     );
