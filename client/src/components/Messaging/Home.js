@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState, useEffect, useContext, Fragment} from 'react';
+import axios from 'axios';
+import AuthContext from '../../context/authContext';
 import Navigation from './Navigation/Navigation';
 import FriendsList from './Friends/FriendsList';
 
-const home = (props) => {
+const Home = (props) => {
+    const authContext = useContext(AuthContext);
+    const {importUser, isAuthenticated} = authContext;
+    useEffect(() => {
+        importUser();
+    }, []);
+
+    if (!isAuthenticated) {
+        return <Fragment></Fragment>
+    }
+
     return (
         <div>
             <Navigation/>
@@ -11,4 +23,4 @@ const home = (props) => {
     );
 };
 
-export default home;
+export default Home;
