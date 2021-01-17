@@ -12,6 +12,10 @@ const user_schema = new mongoose.Schema({
         type: String,
         required: true
     },
+    friends_list: {
+        type: [String],
+        default: []
+    },
     created_date: {
         type: Date,
         default: Date.now,

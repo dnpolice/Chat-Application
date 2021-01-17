@@ -5,7 +5,8 @@ const convo_schema = new mongoose.Schema({
         required: true
     },
     messages: {
-        type: []
+        type: [mongoose.Schema.Types.ObjectId],
+        default: []
     }
 });
 
