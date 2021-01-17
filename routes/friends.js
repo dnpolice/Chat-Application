@@ -18,7 +18,6 @@ router.post('/', [auth, [
     try {
         let user = await User.findById(req.user.id);
         const friend = await User.findOne({email: req.body.friend});
-
         if (!friend) return res.status(400).json({msg: 'Invalid Friend'});
         
         const updated_friends_list = user.friends_list;
