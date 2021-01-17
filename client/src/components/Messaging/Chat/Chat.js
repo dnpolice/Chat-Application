@@ -17,6 +17,17 @@ const Chat = (props) => {
             <SendBar friendEmail={friendEmail}/>
             <Messages/>
             <h3>FRIEND NAME</h3>
+            <div className={classes.ChatBox}>
+                <div className={classes.ChatMessages_left}>
+                    Hello
+                </div>
+                <div className={classes.ChatMessages_right}>
+                    Hello
+                </div>
+                <div className={classes.ChatMessages_left}>
+                    Hi
+                </div>
+            </div>
         </div>
     );
 };
