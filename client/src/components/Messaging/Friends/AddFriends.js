@@ -55,7 +55,8 @@ const AddFriends = (props) => {
             <Modal show={state.show} modalClosed={closeModal}>
                 <form onSubmit={addFriendHandler}>
                     <h3><b>ADD FRIENDS!</b></h3>
-                    <h4>Want to chat with you friends on ChatApp? Add them via email and let the chatting begin!</h4>
+                    <h4>Want to chat with your friends on ChatApp? Add them via email and let the chatting begin! 
+                        Make sure both you and your friend have added each other before sending each other messages.</h4>
                     <input type="email" placeholder="Enter Email" name="email" value={state.email} onChange={onChangeHandler} required></input>
                     <br/>
                     <button type="submit" className={classes.AddFriendBtn} onSubmit={addFriendHandler}>ADD FRIEND</button>
