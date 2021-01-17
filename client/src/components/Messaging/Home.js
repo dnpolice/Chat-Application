@@ -18,11 +18,6 @@ const Home = (props) => {
     }
 
     return (
-        // <div>
-        //     <Navigation/>
-        //     <FriendsList/>
-        //     <Chat/>
-        // </div>
         <Fragment className={classes.Home}>
             <Navigation/>
             <Flexrow/>

@@ -8,7 +8,7 @@ const SignIn = (props) => {
     const {importUser, isAuthenticated} = authContext;
 
     useEffect(() => {
-        if (isAuthenticated) props.history.push('/messaging');
+        if (isAuthenticated) props.history.push('/');
     }, [isAuthenticated, props.history]);
 
     const [user, setUser] = useState({

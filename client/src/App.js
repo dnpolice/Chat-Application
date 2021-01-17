@@ -9,9 +9,9 @@ function App() {
   return (
     <div>
       <Switch>
-        <PrivateRoute path="/messaging" exact component={Home}/>
         <Route path="/signin" exact component={SignIn}/>
         <Route path="/signup" exact component={Register}/>
+        <PrivateRoute path="/" component={Home}/>
       </Switch>  
     </div>
   );

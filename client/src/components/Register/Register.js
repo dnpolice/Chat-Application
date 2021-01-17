@@ -9,7 +9,7 @@ const Register = (props) => {
 
     useEffect(() => {
         if(isAuthenticated === true){
-            props.history.push('/messaging');
+            props.history.push('/');
         }
     }, [isAuthenticated, props.history]);
     
