@@ -6,6 +6,10 @@
     outline: black;
 }
 
+.AddFriends h4 {
+    font-weight:normal; 
+}
+
 .AddBtn {
     border-radius: 50%;
     width: 25px;
@@ -30,4 +34,34 @@
 
 .AddBtn:hover {
     background-color: rgb(90, 49, 39);
+}
+
+.AddFriendBtn {
+    background-color: rgb(175, 96, 76);
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
+.AddFriendBtn:hover {
+    opacity: 1;
+}
+
+.CancelBtn {
+    background-color: rgb(88, 50, 40);
+    color: white;
+    padding: 16px 20px;
+    margin-left: 80px;
+    border: none;
+    cursor: pointer;
+    width: 20%;
+    opacity: 0.9;
+}
+
+.CancelBtn:hover {
+    opacity: 1;
 }

@@ -4,5 +4,6 @@
     width: 25%;
     height: 660px;    
     border-right: black;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
