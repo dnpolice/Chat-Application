@@ -3,6 +3,7 @@ import classes from './AddFriends.module.css';
 import Modal from '../UI/Modal';
 import axios from 'axios';
 import FriendContext from '../../../friendContext/friendContext';
+
 const AddFriends = (props) => {
     const friendContext = useContext(FriendContext);
     const {getAllFriends} = friendContext;
@@ -47,7 +48,7 @@ const AddFriends = (props) => {
 
     return (
         <div className={classes.AddFriends}>
-            <h3>FRIENDS</h3>
+            <h3 className={classes.FriendsText}>FRIENDS</h3>
             <div className={classes.AddBtn} onClick={showAddFriendHandler}></div>
             {state.show ? 
             <Modal show={state.show} modalClosed={closeModal}>
