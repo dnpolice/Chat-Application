@@ -3,6 +3,7 @@
     padding: 30px;
     margin: 0px;
     border: 2px solid white;
+    border-left: 8px solid white;
     background: rgb(175, 96, 76);
     color: white;
     cursor: pointer;
