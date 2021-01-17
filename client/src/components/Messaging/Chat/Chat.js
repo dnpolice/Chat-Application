@@ -1,5 +1,6 @@
 import React, {useContext, Fragment} from 'react';
 import SendBar from './SendBar';
+import Messages from './Messages';
 import classes from './Chat.module.css';
 import FriendContext from '../../../friendContext/friendContext';
 
@@ -14,6 +15,8 @@ const Chat = (props) => {
     return(
         <div className={classes.Chat}>
             <SendBar friendEmail={friendEmail}/>
+            <Messages/>
+            <h3>FRIEND NAME</h3>
         </div>
     );
 };
