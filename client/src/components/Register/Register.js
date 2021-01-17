@@ -3,8 +3,6 @@ import classes from './Register.module.css';
 import axios from 'axios';
 
 const Register = (props) => {
-        
-    
 
     const [user, setUser] = useState({
         name: "",
@@ -35,7 +33,7 @@ const Register = (props) => {
     const {name, email, password, pswConfirm} = user;
     
     return (
-        <form onSubmit={onSubmit}>
+        <form className={classes.Register} onSubmit={onSubmit}>
             <div className={classes.container}>
                 <h1>Sign Up For A ChatApp Account!</h1>
                 <br/>

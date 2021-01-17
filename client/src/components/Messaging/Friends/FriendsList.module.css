@@ -1,0 +1,8 @@
+.FriendsList {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    height: 660px;    
+    border-right: black;
+    overflow: scroll;
+}

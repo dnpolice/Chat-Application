@@ -38,7 +38,7 @@ const SignIn = (props) => {
     const {email, password} = user;
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={classes.SignIn} onSubmit={onSubmit}>
             <div className={classes.container}>
                 <h1>Sign In</h1>
                 <br/>

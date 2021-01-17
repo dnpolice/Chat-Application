@@ -25,12 +25,12 @@
     opacity: 1;
 }
 
-h1 {
+.Register h1 {
     margin-top: 60px;
     color: rgb(175, 96, 76);
 }
 
-a {
+.Register a {
     color: blue;
 }
 
