@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import SendBar from './SendBar';
 import Messages from './Messages';
 import classes from './Chat.module.css';
@@ -9,7 +9,13 @@ const Chat = (props) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail, friendName} = friendContext;
 
+    function timeout(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     const [messages, setMessages] = useState(null);
+
+    
     const getMessages = async () => {
         const config = {
             headers: {
@@ -17,14 +23,21 @@ const Chat = (props) => {
             }
         }
         try{
+            console.log(friendEmail);
             const request = await axios.post('/api/messages/all', {friend: friendEmail}, config);
-            setMessages(request.body.messages);
+            await timeout(5000);
+            setMessages(request.data.messages);
         } catch(error) {
             console.log(error.message);
         }
     }
 
-    if(!messages) getMessages();
+    useEffect(async () => {
+        await timeout(5000);
+        getMessages();
+    }, [messages, friendEmail]);
+
+    if(!messages && friendEmail) getMessages();
 
     if (!friendEmail) return (
      <h2 className={classes.ChatMessage}>Select a Friend to Message!</h2>
