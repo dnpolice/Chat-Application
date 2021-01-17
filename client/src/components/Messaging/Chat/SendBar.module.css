@@ -11,5 +11,5 @@
 
 .SendBar input[type="text"] {
     margin: 5px 0 5px 0;
-    width: 80%;
+    /* width: 75%; */
 }

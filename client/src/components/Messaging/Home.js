@@ -1,8 +1,10 @@
 import React, {useEffect, useContext, Fragment} from 'react';
 import AuthContext from '../../context/authContext';
 import Navigation from './Navigation/Navigation';
-import FriendsList from './Friends/FriendsList';
-import Chat from './Chat/Chat';
+// import FriendsList from './Friends/FriendsList';
+// import Chat from './Chat/Chat';
+import Flexrow from './Flexrow';
+import classes from './Home.module.css';
 
 const Home = (props) => {
     const authContext = useContext(AuthContext);
@@ -16,11 +18,15 @@ const Home = (props) => {
     }
 
     return (
-        <div>
+        // <div>
+        //     <Navigation/>
+        //     <FriendsList/>
+        //     <Chat/>
+        // </div>
+        <Fragment className={classes.Home}>
             <Navigation/>
-            <FriendsList/>
-            <Chat/>
-        </div>
+            <Flexrow/>
+        </Fragment>
     );
 };
 
