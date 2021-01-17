@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import AuthState from './context/authState'
 
 const app = (
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <AuthState>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </AuthState>
 )
 
 ReactDOM.render(

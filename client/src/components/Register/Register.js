@@ -1,9 +1,19 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import classes from './Register.module.css';
 import axios from 'axios';
+import AuthContext from '../../context/authContext';
 
 const Register = (props) => {
-        
+    const authContext = useContext(AuthContext);
+    const {importUser, isAuthenticated} = authContext;
+
+    useEffect(() => {
+        console.log("is authenticated", isAuthenticated);
+        if(isAuthenticated === true){
+            console.log("push history");
+            props.history.push('/messaging');
+        }
+    }, [isAuthenticated, props.history]);
     
 
     const [user, setUser] = useState({
@@ -23,6 +33,7 @@ const Register = (props) => {
             const result = await axios.post("/api/users", user, config);
             console.log(result.data.token);
             localStorage.setItem('token', result.data.token);
+            await importUser();
         } catch (error) {
             console.log(error.message)
         }     

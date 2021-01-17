@@ -1,13 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import classes from './SignIn.module.css';
 import axios from 'axios';
-//Change to login page currently is signup page
-//The object being sent should look like : {
-//     email: email,
-//     password: password
-// } when being sent to backend
+import AuthContext from '../../context/authContext';
+
 const SignIn = (props) => {
-    
+    const authContext = useContext(AuthContext);
+    const {importUser, isAuthenticated} = authContext;
+
+    useEffect(() => {
+        if (isAuthenticated) props.history.push('/messaging');
+    }, [isAuthenticated, props.history]);
+
     const [user, setUser] = useState({
         email: "",
         password: "",
@@ -25,6 +28,7 @@ const SignIn = (props) => {
             const result = await axios.post("/api/auth", user, config);
             console.log(result.data.token)
             localStorage.setItem('token', result.data.token);
+            await importUser();
         } catch (error) {
             console.log(error.message)
         }
