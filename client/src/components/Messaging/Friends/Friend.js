@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Friend.module.css';
 
-const friend = (props) => {
+const friend = ({name, email}) => {
     let style = classes.Friend;
 
     const openFriendHandler = () => {
@@ -9,7 +9,7 @@ const friend = (props) => {
     }    
 
     return (
-        <div className={style} onClick={openFriendHandler}><b>Test name</b></div>
+        <div className={style} onClick={openFriendHandler}><b>{name}</b></div>
     );
 };
 
