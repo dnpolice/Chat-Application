@@ -5,10 +5,10 @@ import classes from './Flexrow.module.css';
 
 const flexrow = (props) => {
     return (
-        <Fragment className={classes.Flexrow}>
-            <FriendsList className={classes.Left}/>
-            <Chat className={classes.Right}/>
-        </Fragment>
+        <div className={classes.Flexrow}>
+            <FriendsList/>
+            <Chat/>
+        </div>
     );
 }
 

@@ -1,15 +1,27 @@
+
+
+.SendBar {
+    display: inline-block;
+    width: 100%;
+    padding:0;
+    margin:0;
+}
+
 .SendBtn {
+    display:inline-block;
     background-color: rgb(175, 96, 76);
     color: white;
-    padding: 15px 25px;
+    padding: 15px 0;
     margin: 5px 0 5px 0;
     border: none;
     cursor: pointer;
-    width: 15%;
+    width: 20%;
     opacity: 0.9;
 }
 
 .SendBar input[type="text"] {
+    display:inline-block;
     margin: 5px 0 5px 0;
-    /* width: 75%; */
+    width: 76%;
+    padding: 15px 2%;
 }

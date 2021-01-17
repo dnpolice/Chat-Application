@@ -7,7 +7,9 @@ const Chat = (props) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail} = friendContext;
 
-    if (!friendEmail) return <div className={classes.ChatMessage}>Select a friend to message!</div>
+    if (!friendEmail) return (
+     <h2 className={classes.ChatMessage}>Select a Friend to Message!</h2>
+    )
     
     return(
         <div className={classes.Chat}>
