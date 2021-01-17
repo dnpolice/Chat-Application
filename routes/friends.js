@@ -29,7 +29,16 @@ router.post('/', [auth, [
             { $set: {friends_list: updated_friends_list} },
             { new: true });
 
-        return res.status(200).json({friends_list: user.friends_list});
+        let friends_obj_list = [];
+        for (const email of user.friends_list){
+            const friend_obj = await User.findOne({email});
+            if(!friend_obj) continue;
+            friends_obj_list.push({
+                name: friend_obj.name,
+                email: friend_obj.email
+            });
+        }
+        return res.status(200).json({friends_list: friends_obj_list});
     } catch (error) {
         console.log(error.message);
         return res.status(500).json({msg: "Server error"});
@@ -43,7 +52,17 @@ router.post('/', [auth, [
 router.get('/', auth, async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
-        return res.status(200).json({friends_list: user.friends_list});
+
+        let friends_obj_list = [];
+        for (const email of user.friends_list){
+            const friend_obj = await User.findOne({email});
+            if(!friend_obj) continue;
+            friends_obj_list.push({
+                name: friend_obj.name,
+                email: friend_obj.email
+            });
+        }
+        return res.status(200).json({friends_list: friends_obj_list});
     } catch (error) {
         console.log(error.message);
     }
