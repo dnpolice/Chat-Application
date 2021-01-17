@@ -1,8 +1,8 @@
-import React, {useState, useEffect, useContext, Fragment} from 'react';
-import axios from 'axios';
+import React, {useEffect, useContext, Fragment} from 'react';
 import AuthContext from '../../context/authContext';
 import Navigation from './Navigation/Navigation';
 import FriendsList from './Friends/FriendsList';
+import Chat from './Chat/Chat';
 
 const Home = (props) => {
     const authContext = useContext(AuthContext);
@@ -19,6 +19,7 @@ const Home = (props) => {
         <div>
             <Navigation/>
             <FriendsList/>
+            <Chat/>
         </div>
     );
 };

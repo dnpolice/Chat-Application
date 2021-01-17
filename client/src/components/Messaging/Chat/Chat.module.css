@@ -1,0 +1,7 @@
+.Chat {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 70%;
+    position: absolute;
+    left: 27%;
+}

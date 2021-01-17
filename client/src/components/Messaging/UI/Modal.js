@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import classes from './Modal.module.css';
-// import Backdrop from './Backdrop';
 
 class Modal extends Component {
 
     render() {
         return (
             <div>
-                {/* <Backdrop showBackDrop={this.props.show} closeBackDrop={this.props.modalClosed}/> */}
                 <div 
                     className={`${classes.Modal} ${classes.AddBtn}` }
                     style={{
