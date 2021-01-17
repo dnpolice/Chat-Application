@@ -10,6 +10,8 @@
 }
 
 .ChatMessages_left{
+    display: inline-block;
+    word-break: break-word;
     color: black;
     background-color: rgb(236, 235, 235);
     border-radius: 10px;
@@ -19,6 +21,8 @@
     width:40%;
 }
 .ChatMessages_right{
+    display: inline-block;
+    word-break: break-word;
     color: black;
     background-color: white;
     padding: 10px;
