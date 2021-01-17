@@ -9,7 +9,8 @@ export default (state, obj) => {
         case "SET_FRIEND":
             return {
                 ...state,
-                friendEmail: obj.payload
+                friendEmail: obj.payload.email,
+                friendName: obj.payload.name
             }
         default: return state;
     }

@@ -7,7 +7,7 @@ const Friend = ({name, email}) => {
     const friendContext = useContext(FriendContext);
     const {setFriendEmail} = friendContext;
     const openFriendHandler = () => {
-        setFriendEmail(email);
+        setFriendEmail(email, name);
     }    
 
     return (
