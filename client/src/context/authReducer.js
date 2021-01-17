@@ -2,7 +2,6 @@
 export default (state, obj) => {
     switch (obj.type) {
         case "USER_LOADED":
-            console.log('in user loaded reducer');
             return {
                 ...state,
                 isAuthenticated: true,

@@ -26,7 +26,6 @@ const AuthState = props => {
         } catch (err){
             dispatch({type: "USER_FAIL"})
         }
-        console.log(state.isAuthenticated);
     }
 
     return (

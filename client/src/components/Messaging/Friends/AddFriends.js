@@ -1,49 +1,68 @@
-import React, {Component} from 'react';
+import React, {useState, useContext} from 'react';
 import classes from './AddFriends.module.css';
 import Modal from '../UI/Modal';
-
-class AddFriends extends Component {
-
-    state = {
+import axios from 'axios';
+import FriendContext from '../../../friendContext/friendContext';
+const AddFriends = (props) => {
+    const friendContext = useContext(FriendContext);
+    const {getAllFriends} = friendContext;
+    
+    const [state, setState] = useState({
         show: false,
         email: "",
+    });
+
+    const addFriendHandler = async e => { 
+        e.preventDefault();
+        const config = {
+            headers: {
+                "Content-Type": 'application/json'
+            }
+        }
+        try {
+            console.log(state.email);
+            await axios.post('/api/friends', {friend: state.email }, config);
+            getAllFriends();
+            closeModal();
+            setState({
+                show: false,
+                email: "",
+            });
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+    
+
+    const closeModal = () => {
+        setState({...state, show: false});
     }
 
-    closeModal = () => {
-        this.setState({show: false});
+    const showAddFriendHandler = () => {
+        setState({...state, show: true});
     }
 
-    showAddFriendHandler = () => {
-        this.setState({show: true});
+    const onChangeHandler = (e) => {
+        setState({...state, email: e.target.value});
     }
 
-    onChangeHandler = (e) => {
-        this.setState({email: e.target.value});
-    }
-
-    addFriendHandler = () => {
-        console.log("submitted!");
-    }
-
-    render() {
-        return (
-            <div className={classes.AddFriends}>
-                <h3>FRIENDS</h3>
-                <div className={classes.AddBtn} onClick={this.showAddFriendHandler}></div>
-                {this.state.show ? 
-                <Modal show={this.state.show} modalClosed={this.closeModal}>
-                    <form onSubmit={this.addFriendHandler}>
-                        <h3><b>ADD FRIENDS!</b></h3>
-                        <h4>Want to chat with you friends on ChatApp? Add them via email and let the chatting begin!</h4>
-                        <input type="text" placeholder="Enter Email" name="email" value={this.state.email} onChange={this.onChangeHandler} required></input>
-                        <br/>
-                        <button type="submit" className={classes.AddFriendBtn} onSubmit={this.addFriendHandler}>ADD FRIEND</button>
-                        <button className={classes.CancelBtn} onClick={this.closeModal}>CANCEL</button>
-                    </form>
-                </Modal> : null}
-            </div> 
-        );
-    }
+    return (
+        <div className={classes.AddFriends}>
+            <h3>FRIENDS</h3>
+            <div className={classes.AddBtn} onClick={showAddFriendHandler}></div>
+            {state.show ? 
+            <Modal show={state.show} modalClosed={closeModal}>
+                <form onSubmit={addFriendHandler}>
+                    <h3><b>ADD FRIENDS!</b></h3>
+                    <h4>Want to chat with you friends on ChatApp? Add them via email and let the chatting begin!</h4>
+                    <input type="email" placeholder="Enter Email" name="email" value={state.email} onChange={onChangeHandler} required></input>
+                    <br/>
+                    <button type="submit" className={classes.AddFriendBtn} onSubmit={addFriendHandler}>ADD FRIEND</button>
+                    <button className={classes.CancelBtn} onClick={closeModal}>CANCEL</button>
+                </form>
+            </Modal> : null}
+        </div> 
+    );
 };
 
 export default AddFriends;

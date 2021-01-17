@@ -1,26 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import classes from './FriendsList.module.css';
 import Friend from './Friend';
 import AddFriends from './AddFriends';
 import axios from 'axios';
+import FriendContext from '../../../friendContext/friendContext';
 
 const FriendsList = (props) => {
-    const [friends, setFriends] = useState(null);
-    const getAllFriends = async () => {
-        try {
-            const result = await axios.get('/api/friends');
-            const friendsList = result.data.friends_list;
-            setFriends(friendsList);
-        } catch (error) {
-            console.log(error.message);
-        }
-    }
-    if(!friends) getAllFriends();
+    const friendContext = useContext(FriendContext);
+    const {getAllFriends, friendsList} = friendContext;
+    useEffect(() => {
+
+    }, [friendsList])
+
+    if(!friendsList) getAllFriends();
 
     return (
         <div className={classes.FriendsList}>
             <AddFriends/>
-            {friends ? friends.map(friend => (
+            {friendsList ? friendsList.map(friend => (
                 <Friend key={friend.email} name={friend.name} email={friend.email}/>
             )) : null}
         </div>
