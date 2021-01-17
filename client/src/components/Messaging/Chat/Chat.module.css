@@ -4,6 +4,13 @@
     /* height: 660px; */
     display: flex;
     flex-direction: column-reverse;
-    /* position: absolute; */
-    /* left: 27%; */
+    width: 70%;
+    position: absolute;
+    left: 27%;
+}
+
+.ChatMessage{
+    text-align: center;
+    display:inline-block;
+    float: right;
 }

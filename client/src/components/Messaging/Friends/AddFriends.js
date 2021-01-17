@@ -20,7 +20,6 @@ const AddFriends = (props) => {
             }
         }
         try {
-            console.log(state.email);
             await axios.post('/api/friends', {friend: state.email }, config);
             getAllFriends();
             closeModal();

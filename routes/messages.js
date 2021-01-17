@@ -17,13 +17,10 @@ router.post('/', [auth, [
     if(!errors.isEmpty()){
         return res.status(400).json({msg: 'Invalid Message'});
     }
-
     try {
         let user = await User.findById(req.user.id);
-
         const friend = await User.findOne({email: req.body.friend});
         if (!friend) return res.status(400).json({msg: 'Invalid Friend'});
-
         let convo = await Conversation.findOne({members: {$all: [req.body.friend, user.email]}});
         if (!convo) {
             convo = new Conversation({
