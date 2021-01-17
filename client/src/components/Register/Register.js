@@ -28,11 +28,28 @@ const Register = (props) => {
     const onSubmit = async e => {
         e.preventDefault();
         try {
+            if (password === pswConfirm){
             const result = await axios.post("/api/users", user, config);
             localStorage.setItem('token', result.data.token);
+            setUser({
+                name: "",
+                email: "",
+                password: "",
+                pswConfirm: ""
+            });
             await importUser();
+            } else {
+                alert("Passwords do not match");
+                setUser({
+                    name: "",
+                    email: "",
+                    password: "",
+                    pswConfirm: ""
+                });
+            }
         } catch (error) {
             console.log(error.message)
+            alert('Server error try again');
         }     
     }
 

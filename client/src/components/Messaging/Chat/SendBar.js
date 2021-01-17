@@ -18,6 +18,7 @@ const SendBar = ({friendEmail, setMessages}) => {
         const request = await axios.post('/api/messages', {friend: friendEmail,
             message_body: message}, config);
         setMessages(request.data.messages);
+        setMessage("")
         } catch(error) {
             console.log(error.message);
         }

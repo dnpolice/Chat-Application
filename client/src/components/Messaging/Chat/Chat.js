@@ -29,8 +29,8 @@ const Chat = (props) => {
             setMessages(request.data.messages);
             setTimeout(() => {
                 if (refreshes > 100) setRefreshes(0);
-                setRefreshes(refreshes +1);
-            }, 15000);
+                else setRefreshes(refreshes +1);
+            }, 10000);
         } catch(error) {
             console.log(error.message);
         }

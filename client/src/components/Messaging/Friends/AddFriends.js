@@ -30,6 +30,7 @@ const AddFriends = (props) => {
             });
         } catch (error) {
             console.log(error.message);
+            alert('Not an Valid User');
         }
     }
     
