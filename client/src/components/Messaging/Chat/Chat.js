@@ -42,14 +42,19 @@ const Chat = ({socket}) => {
         getMessages();
     }
 
-    if(friendEmail && currentFriendEmail && currentFriendEmail !== friendEmail) {
-        setCurrentFriendEmail(friendEmail);
-        setMessages({messages: null});
-        
-    }
+    useEffect(() => {
+        if(friendEmail && currentFriendEmail && currentFriendEmail !== friendEmail) {
+            setCurrentFriendEmail(friendEmail);
+            setMessages({messages: null});
+        }
+    }, [friendEmail])
 
     useEffect(() => {
-        socket.removeListener('message');
+        try {
+            socket.removeListener('message');
+        } catch (error) {
+            
+        }
         socket.on('message', (message) => {
             if (messages.messages){
                 setMessages({messages: [...messages.messages, {
