@@ -1,12 +1,14 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classes from './SendBar.module.css';
 import axios from 'axios';
 
-const SendBar = ({friendEmail, setMessages}) => {
+const SendBar = ({messages, friendEmail, socket}) => {
     const [message, setMessage] = useState("");
+    
     const onChange = e => {
         setMessage(e.target.value);
     }
+
     const sendMessage = async e => {
         e.preventDefault();
         const config = {
@@ -15,11 +17,17 @@ const SendBar = ({friendEmail, setMessages}) => {
             }
         }
         try{
-        const request = await axios.post('/api/messages', {friend: friendEmail,
-            message_body: message}, config);
-        setMessages(request.data.messages);
-        setMessage("")
+        const request = await axios.get('api/users');
+        const myEmail = request.data.email;
+        socket.emit('message', {
+            friendEmail,
+            email: myEmail,
+            message
+        });
+        setMessage("");
+        await axios.post('/api/messages', {friend: friendEmail, message_body: message}, config);
         } catch(error) {
+            alert('Message failed to send')
             console.log(error.message);
         }
     }

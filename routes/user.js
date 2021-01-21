@@ -4,6 +4,7 @@ const {body, validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
+const auth = require('../middleware/auth');
 
 // @route POST api/users
 // @access Public
@@ -42,6 +43,19 @@ router.post('/', [
             res.status(200).json({token});
           });
 
+    } catch (error) {
+        console.log(error.message);
+    }
+});
+
+
+// @route GET api/users
+// @access private
+router.get('/', auth, async (req,res) => {
+    try {
+        let user = await User.findOne({_id: req.user.id});
+        if(!user) return res.status(400).json({msg: 'No user'});
+        else return res.status(200).json({email: user.email});
     } catch (error) {
         console.log(error.message);
     }

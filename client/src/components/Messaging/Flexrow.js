@@ -3,11 +3,11 @@ import FriendsList from './Friends/FriendsList';
 import Chat from './Chat/Chat';
 import classes from './Flexrow.module.css';
 
-const flexrow = (props) => {
+const flexrow = ({socket}) => {
     return (
         <div className={classes.Flexrow}>
             <FriendsList/>
-            <Chat/>
+            <Chat socket={socket}/>
         </div>
     );
 }

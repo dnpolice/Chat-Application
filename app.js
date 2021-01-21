@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const auth = require('./middleware/auth');
 const app = express();
 const path = require('path');
+const socketio = require('socket.io');
 require('dotenv').config();
 
 const connectDB = async () => {
@@ -39,6 +40,29 @@ if (process.env.NODE_ENV === 'production') {
     });
 }
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}...`);
+});
+
+const io = socketio(server);
+
+io.on('connection', (socket) => {
+    socket.on('join', ({friendEmail, email}) => {
+        let room;
+        if (friendEmail > email)
+            room = friendEmail + email;
+        else
+           room = email + friendEmail;
+        socket.join(room);
+    });
+
+    socket.on('message', message => {
+        let room;
+        const {friendEmail, email} = message;
+        if (friendEmail > email)
+            room = friendEmail + email;
+        else
+            room = email + friendEmail;
+        io.to(room).emit('message', message);
+    });
 });
