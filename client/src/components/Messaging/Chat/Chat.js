@@ -9,9 +9,13 @@ const Chat = ({socket}) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail, friendName} = friendContext;
 
+    useEffect((() => {
+        setCurrentFriendEmail(friendEmail);
+        setMessages({messages: null});
+    }, [friendContext])
+
     const [messages, setMessages] = useState({messages: null});
     const [currentFriendEmail, setCurrentFriendEmail] = useState(friendEmail);
-    const [joined, setJoined] = useState(false);
 
     
     const getMessages = async () => {
