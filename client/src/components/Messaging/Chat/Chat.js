@@ -9,10 +9,10 @@ const Chat = ({socket}) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail, friendName} = friendContext;
 
-    useEffect((() => {
+    useEffect(() => {
         setCurrentFriendEmail(friendEmail);
         setMessages({messages: null});
-    }, [friendContext])
+    }, [friendContext]);
 
     const [messages, setMessages] = useState({messages: null});
     const [currentFriendEmail, setCurrentFriendEmail] = useState(friendEmail);
