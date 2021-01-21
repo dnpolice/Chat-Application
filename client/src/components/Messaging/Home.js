@@ -6,7 +6,7 @@ import Navigation from './Navigation/Navigation';
 import Flexrow from './Flexrow';
 import classes from './Home.module.css';
 import io from 'socket.io-client';
-const Home = ({socket}) => {
+const Home = (props) => {
     const authContext = useContext(AuthContext);
     const {importUser, isAuthenticated} = authContext;
     let socket = io(`https://chatappproj.herokuapp.com/`,  { transports: ['websocket', 'polling', 'flashsocket'] });
