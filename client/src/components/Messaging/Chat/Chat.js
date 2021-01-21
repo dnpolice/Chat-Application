@@ -8,15 +8,13 @@ import axios from 'axios'
 const Chat = ({socket}) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail, friendName} = friendContext;
-    console.log(friendEmail);
+    const [messages, setMessages] = useState({messages: null});
+
 
     useEffect(() => {
-        setCurrentFriendEmail(friendEmail);
         setMessages({messages: null});
-    }, [friendContext]);
-
-    const [messages, setMessages] = useState({messages: null});
-    const [currentFriendEmail, setCurrentFriendEmail] = useState(friendEmail);
+        getMessages();
+    }, [friendEmail]);
 
     
     const getMessages = async () => {
@@ -45,11 +43,6 @@ const Chat = ({socket}) => {
 
     if(!messages.messages && friendEmail) {
         getMessages();
-    }
-
-    if(friendEmail && currentFriendEmail !== friendEmail) {
-        setCurrentFriendEmail(friendEmail);
-        setMessages({messages: null});
     }
 
     useEffect(() => {

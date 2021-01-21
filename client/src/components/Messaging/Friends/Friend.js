@@ -8,7 +8,6 @@ const Friend = ({name, email}) => {
     const {setFriendEmail} = friendContext;
     const openFriendHandler = () => {
         setFriendEmail(email, name);
-        console.log(email);
     }    
 
     return (

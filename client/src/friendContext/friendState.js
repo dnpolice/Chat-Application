@@ -24,7 +24,6 @@ const FriendState = props => {
     
     const setFriendEmail = (email, name) => {
         dispatch({type:'SET_FRIEND', payload: {email, name}});
-        console.log(email);
     }
 
     return (
