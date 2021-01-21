@@ -13,8 +13,7 @@ const Home = (props) => {
 
     useEffect(() => {
         importUser();
-        socket = io('/',  { transports: ['websocket', 'polling', 'flashsocket'] });
-
+        socket = io(`https://chatappproj.herokuapp.com:${proccess.env.PORT}/`,  { transports: ['websocket', 'polling', 'flashsocket'] });
     }, []);
 
     if (!isAuthenticated) {
