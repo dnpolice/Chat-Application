@@ -46,8 +46,15 @@ const Chat = ({socket}) => {
         if(friendEmail && currentFriendEmail && currentFriendEmail !== friendEmail) {
             setCurrentFriendEmail(friendEmail);
             setMessages({messages: null});
+            console.log('clear')
         }
     }, [friendEmail])
+    console.log(friendEmail);
+
+    if(friendEmail && currentFriendEmail !== friendEmail) {
+        setCurrentFriendEmail(friendEmail);
+        setMessages({messages: null});
+    }
 
     useEffect(() => {
         try {
