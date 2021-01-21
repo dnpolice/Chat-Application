@@ -8,6 +8,7 @@ import axios from 'axios'
 const Chat = ({socket}) => {
     const friendContext = useContext(FriendContext);
     const {friendEmail, friendName} = friendContext;
+    console.log(friendEmail);
 
     useEffect(() => {
         setCurrentFriendEmail(friendEmail);
