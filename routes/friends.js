@@ -5,6 +5,7 @@ const User = require('../models/User');
 const auth = require('../middleware/auth');
 
 // @route POST api/friends
+//Should be PUT
 // @access Private
 // @desc Add a friend
 router.post('/', [auth, [
@@ -17,6 +18,7 @@ router.post('/', [auth, [
 
     try {
         let user = await User.findById(req.user.id);
+        if (user.email === req.body.friend) return res.status(400).json({msg: 'Invalid Friend'});
         const friend = await User.findOne({email: req.body.friend});
         if (!friend) return res.status(400).json({msg: 'Invalid Friend'});
         

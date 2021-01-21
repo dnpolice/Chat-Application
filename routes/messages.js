@@ -71,14 +71,13 @@ router.post('/all', [auth, [
 
     try {
         const user = await User.findById(req.user.id);
+        if (req.body.friend === user.email) return res.status(400).json({msg: 'Cannot message yourself'});
         const friend = await User.findOne({email: req.body.friend});
         if (!friend) return res.status(400).json({msg: 'Invalid Friend'});
-        console.log(req.body.friend, user.email);
         const convo = await Conversation.findOne({members: {$all: [req.body.friend, user.email]}});
         if (!convo) {
             return res.status(200).json({messages: []});
         }
-        console.log(convo.members);
 
 
         const message_list_obj = [];

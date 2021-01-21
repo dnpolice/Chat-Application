@@ -10,10 +10,7 @@ const Chat = ({socket}) => {
     const {friendEmail, friendName} = friendContext;
     const [messages, setMessages] = useState({messages: null});
 
-    console.log(friendEmail);
-
     useEffect(() => {
-        console.log('cahnge messages')
         setMessages({messages: null});
         getMessages();
     }, [friendEmail]);
