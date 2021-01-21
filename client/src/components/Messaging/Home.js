@@ -6,14 +6,13 @@ import Navigation from './Navigation/Navigation';
 import Flexrow from './Flexrow';
 import classes from './Home.module.css';
 import io from 'socket.io-client';
-let socket;
-const Home = (props) => {
+const Home = ({socket}) => {
     const authContext = useContext(AuthContext);
     const {importUser, isAuthenticated} = authContext;
+    let socket = io(`https://chatappproj.herokuapp.com/`,  { transports: ['websocket', 'polling', 'flashsocket'] });
 
     useEffect(() => {
         importUser();
-        socket = io(`https://chatappproj.herokuapp.com/`,  { transports: ['websocket', 'polling', 'flashsocket'] });
     }, []);
 
     if (!isAuthenticated) {
